@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pacific Energy Hub — International Energy Trading</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:    #0a1f0e;
+      --navy2:   #0d2e14;
+      --green:   #1a6b2f;
+      --green2:  #2d9c4a;
+      --teal:    #1e8a7a;
+      --teal2:   #25b89e;
+      --gold:    #f0a500;
+      --blue:    #1a6cbf;
+      --white:   #ffffff;
+      --offwhite:#f6fbf7;
+      --text:    #1a2e1e;
+      --muted:   #5a7a62;
+      --light:   #c8e8d0;
+      --border:  #cce4d4;
+      --sky:     #eaf5ee;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 52px; height: 76px;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 20px rgba(10,30,14,0.07);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 0; text-decoration: none; }
+    .nav-logo img { height: 58px; width: auto; object-fit: contain; }
+    .nav-links { display: flex; gap: 34px; list-style: none; }
+    .nav-links a { font-size: 0.88rem; font-weight: 500; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--green); }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .social-link { color: var(--muted); transition: color 0.2s; display: flex; align-items: center; }
+    .social-link:hover { color: var(--green); }
+    .social-link svg { width: 18px; height: 18px; }
+    .btn-nav {
+      background: linear-gradient(135deg, var(--green), var(--teal));
+      color: white; border: none; padding: 10px 24px; border-radius: 6px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 600;
+      cursor: pointer; text-decoration: none; display: inline-block; transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-nav:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      position: relative; overflow: hidden;
+      display: flex; align-items: center;
+      padding: 120px 52px 80px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=1600&q=80');
+      background-size: cover; background-position: center;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(100deg, rgba(10,31,14,0.88) 0%, rgba(10,31,14,0.7) 50%, rgba(10,31,14,0.4) 100%);
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 660px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(37,184,158,0.15); border: 1px solid rgba(37,184,158,0.4);
+      color: var(--teal2); padding: 6px 16px; border-radius: 100px;
+      font-size: 0.74rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      margin-bottom: 28px; animation: fadeUp 0.7s ease both;
+    }
+    .badge-dot { width:6px;height:6px;border-radius:50%;background:var(--teal2);box-shadow:0 0 8px var(--teal2);animation:pulse 2s infinite; }
+    @keyframes pulse{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.5);opacity:0.5;}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.8rem, 5.5vw, 5rem); font-weight: 800; color: #fff;
+      line-height: 1.08; letter-spacing: -1px; margin-bottom: 24px;
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--teal2), #7ed957);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero p { font-size:1.05rem;line-height:1.8;color:rgba(210,240,218,0.9);margin-bottom:40px;font-weight:300;animation:fadeUp 0.7s 0.2s ease both; }
+    .hero-btns { display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp 0.7s 0.3s ease both; }
+    .btn-hp {
+      background: linear-gradient(135deg, var(--teal2), #7ed957);
+      color: #0a1f0e; padding: 15px 36px; border-radius: 8px;
+      font-size: 0.92rem; font-weight: 700; text-decoration: none; display: inline-block;
+      transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 8px 24px rgba(37,184,158,0.35);
+    }
+    .btn-hp:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(37,184,158,0.45); }
+    .btn-hs {
+      background: rgba(255,255,255,0.1); color: white; padding: 15px 36px; border-radius: 8px;
+      font-size: 0.92rem; font-weight: 600; text-decoration: none; display: inline-block;
+      border: 1px solid rgba(255,255,255,0.25); transition: background 0.2s;
+    }
+    .btn-hs:hover { background: rgba(255,255,255,0.18); }
+    .hero-desks { margin-top:56px;display:flex;gap:28px;flex-wrap:wrap;animation:fadeUp 0.7s 0.4s ease both; }
+    .desk-item { display:flex;align-items:center;gap:8px;font-size:0.8rem;color:rgba(200,230,210,0.8);font-weight:500; }
+    .desk-dot { width:7px;height:7px;border-radius:50%;background:var(--teal2);box-shadow:0 0 8px var(--teal2);flex-shrink:0; }
+
+    /* ===== SECTION BASE ===== */
+    section { padding: 88px 52px; }
+    .section-label {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 12px; display: flex; align-items: center; gap: 10px;
+    }
+    .section-label::before { content:'';display:block;width:24px;height:2px;background:var(--teal);border-radius:2px; }
+    .section-title { font-family:'Syne',sans-serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:800;color:var(--navy);line-height:1.1;letter-spacing:-0.5px;margin-bottom:16px; }
+    .section-sub { font-size:1rem;color:var(--muted);line-height:1.8;max-width:580px; }
+
+    /* ===== ABOUT ===== */
+    .about-section { background: var(--offwhite); }
+    .about-grid { display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center; }
+    .about-text p { font-size:0.97rem;line-height:1.85;color:var(--muted);margin-top:14px; }
+    .about-text p + p { margin-top:12px; }
+    .desks-list { margin-top:28px;display:flex;flex-direction:column;gap:10px; }
+    .desk-row { display:flex;align-items:center;gap:12px;padding:12px 18px;background:white;border:1px solid var(--border);border-radius:8px;font-size:0.88rem;font-weight:500;color:var(--text); }
+    .desk-flag { font-size:1.2rem; }
+    .about-img-wrap {
+      border-radius: 16px; overflow: hidden;
+      box-shadow: 0 16px 48px rgba(10,30,14,0.15);
+      position: relative;
+    }
+    .about-img-wrap img { width:100%;height:420px;object-fit:cover;display:block; }
+    .about-img-badge {
+      position: absolute; bottom: 20px; left: 20px;
+      background: rgba(10,31,14,0.85); backdrop-filter: blur(8px);
+      border: 1px solid rgba(37,184,158,0.3);
+      color: white; padding: 12px 20px; border-radius: 10px;
+      display: flex; gap: 20px;
+    }
+    .aib-stat { text-align: center; }
+    .aib-num { font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:var(--teal2);line-height:1; }
+    .aib-label { font-size:0.66rem;text-transform:uppercase;letter-spacing:1.5px;color:rgba(200,230,210,0.7);margin-top:2px; }
+
+    /* ===== PRODUCTS ===== */
+    .products-section { background: white; }
+    .products-intro { display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:52px;flex-wrap:wrap;gap:24px; }
+    .products-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:20px; }
+    .product-card {
+      border:1px solid var(--border);border-radius:14px;padding:28px 22px;background:var(--offwhite);
+      transition:all 0.25s;position:relative;overflow:hidden;
+    }
+    .product-card::before {
+      content:'';position:absolute;top:0;left:0;right:0;height:3px;
+      background:linear-gradient(90deg,var(--green),var(--teal2));
+      transform:scaleX(0);transition:transform 0.3s;transform-origin:left;
+    }
+    .product-card:hover { box-shadow:0 8px 32px rgba(10,30,14,0.1);transform:translateY(-3px);border-color:var(--teal); }
+    .product-card:hover::before { transform:scaleX(1); }
+    .product-icon { width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:16px; }
+    .icon-g { background:rgba(26,107,47,0.08); }
+    .icon-t { background:rgba(30,138,122,0.08); }
+    .icon-b { background:rgba(26,108,191,0.08); }
+    .icon-d { background:rgba(240,165,0,0.08); }
+    .product-category { font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--teal);font-weight:600;margin-bottom:8px; }
+    .product-name { font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:12px; }
+    .product-items { list-style:none;display:flex;flex-direction:column;gap:6px; }
+    .product-items li { font-size:0.82rem;color:var(--muted);display:flex;align-items:center;gap:7px; }
+    .product-items li::before { content:'';display:block;width:4px;height:4px;border-radius:50%;background:var(--teal2);flex-shrink:0; }
+
+    /* ===== PHOTO STRIP ===== */
+    .photo-strip { padding: 0; display: grid; grid-template-columns: repeat(3,1fr); height: 320px; }
+    .strip-photo { overflow: hidden; position: relative; }
+    .strip-photo img { width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s; }
+    .strip-photo:hover img { transform: scale(1.05); }
+    .strip-photo-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 18px 20px 16px;
+      background: linear-gradient(to top, rgba(10,31,14,0.85), transparent);
+      color: white; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.5px;
+    }
+
+    /* ===== EDGE ===== */
+    .edge-section { background: var(--offwhite); }
+    .edge-intro { display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;flex-wrap:wrap;gap:24px; }
+    .edge-grid { display:grid;grid-template-columns:repeat(2,1fr);gap:20px; }
+    .edge-card { background:white;border-radius:16px;padding:32px 28px;border:1px solid var(--border);display:flex;gap:18px;transition:box-shadow 0.2s,transform 0.2s; }
+    .edge-card:hover { box-shadow:0 8px 32px rgba(10,30,14,0.09);transform:translateY(-2px); }
+    .edge-icon-wrap { width:50px;height:50px;flex-shrink:0;border-radius:12px;background:linear-gradient(135deg,rgba(26,107,47,0.09),rgba(30,138,122,0.09));display:flex;align-items:center;justify-content:center;font-size:1.4rem; }
+    .edge-title { font-family:'Syne',sans-serif;font-size:1.02rem;font-weight:700;color:var(--navy);margin-bottom:7px; }
+    .edge-desc { font-size:0.87rem;line-height:1.75;color:var(--muted); }
+
+    /* ===== CONTACT ===== */
+    .contact-section { background: white; border-top: 1px solid var(--border); }
+    .contact-grid { display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start; }
+    .contact-cards { display:flex;flex-direction:column;gap:16px;margin-top:32px; }
+    .contact-card { display:flex;gap:16px;align-items:flex-start;padding:22px;border:1px solid var(--border);border-radius:12px;background:var(--offwhite);transition:border-color 0.2s,box-shadow 0.2s; }
+    .contact-card:hover { border-color:var(--teal);box-shadow:0 4px 20px rgba(30,138,122,0.1); }
+    .contact-icon { width:42px;height:42px;flex-shrink:0;background:linear-gradient(135deg,var(--green),var(--teal));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem; }
+    .contact-label { font-size:0.68rem;text-transform:uppercase;letter-spacing:2px;color:var(--teal);font-weight:600;margin-bottom:3px; }
+    .contact-value { font-size:0.92rem;font-weight:500;color:var(--navy); }
+    .contact-value a { color:var(--green);text-decoration:none; }
+    .contact-value a:hover { text-decoration:underline; }
+    .contact-note { font-size:0.78rem;color:var(--muted);margin-top:2px; }
+    .social-row { display:flex;gap:12px;margin-top:8px; }
+    .social-btn {
+      display:flex;align-items:center;gap:8px;padding:9px 18px;
+      border:1px solid var(--border);border-radius:8px;
+      font-size:0.82rem;font-weight:600;color:var(--text);
+      text-decoration:none;background:var(--offwhite);transition:all 0.2s;
+    }
+    .social-btn:hover { border-color:var(--teal);color:var(--teal);background:white; }
+    .social-btn svg { width:16px;height:16px;flex-shrink:0; }
+
+    .contact-form { background:var(--offwhite);border-radius:16px;padding:36px;border:1px solid var(--border); }
+    .form-title { font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;color:var(--navy);margin-bottom:22px; }
+    .form-row { display:grid;grid-template-columns:1fr 1fr;gap:12px; }
+    .form-group { display:flex;flex-direction:column;gap:5px;margin-bottom:12px; }
+    .form-group label { font-size:0.76rem;font-weight:600;color:var(--text);letter-spacing:0.3px; }
+    .form-group input,.form-group select,.form-group textarea {
+      padding:11px 13px;border:1.5px solid var(--border);border-radius:8px;
+      font-family:'DM Sans',sans-serif;font-size:0.9rem;color:var(--text);
+      background:white;transition:border-color 0.2s;outline:none;resize:none;
+    }
+    .form-group input:focus,.form-group select:focus,.form-group textarea:focus {
+      border-color:var(--teal);box-shadow:0 0 0 3px rgba(30,138,122,0.1);
+    }
+    .btn-submit {
+      width:100%;background:linear-gradient(135deg,var(--green),var(--teal));color:white;border:none;
+      padding:14px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.95rem;font-weight:600;
+      cursor:pointer;transition:opacity 0.2s,transform 0.2s;margin-top:4px;
+    }
+    .btn-submit:hover { opacity:0.9;transform:translateY(-1px); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--navy2);
+      padding: 52px 52px 28px;
+    }
+    .footer-top { display:grid;grid-template-columns:2fr 1fr 1fr;gap:52px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.08); }
+    .footer-brand p { color:rgba(200,230,210,0.55);font-size:0.87rem;line-height:1.8;margin-top:14px;max-width:300px; }
+    .footer-logo img { height: 60px; width: auto; filter: brightness(0) invert(1); opacity: 0.9; }
+    .footer-social { display:flex;gap:12px;margin-top:18px; }
+    .footer-soc-btn {
+      width:36px;height:36px;border-radius:8px;border:1px solid rgba(255,255,255,0.15);
+      display:flex;align-items:center;justify-content:center;
+      color:rgba(200,230,210,0.6);transition:all 0.2s;text-decoration:none;
+    }
+    .footer-soc-btn:hover { border-color:var(--teal2);color:var(--teal2); }
+    .footer-soc-btn svg { width:15px;height:15px; }
+    .footer-col h4 { font-size:0.7rem;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.85);font-weight:600;margin-bottom:16px; }
+    .footer-col ul { list-style:none;display:flex;flex-direction:column;gap:9px; }
+    .footer-col a { color:rgba(200,230,210,0.5);text-decoration:none;font-size:0.87rem;transition:color 0.2s; }
+    .footer-col a:hover { color:var(--teal2); }
+    .footer-bottom { padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px; }
+    .footer-bottom p { color:rgba(200,230,210,0.28);font-size:0.77rem; }
+    .footer-desks { display:flex;gap:16px; }
+    .footer-desk-tag { font-size:0.7rem;color:rgba(37,184,158,0.55);letter-spacing:0.5px; }
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:960px){
+      nav{padding:0 18px;}
+      .nav-links{display:none;}
+      section{padding:60px 18px;}
+      .hero{padding:100px 18px 60px;}
+      .about-grid,.contact-grid,.footer-top{grid-template-columns:1fr;gap:32px;}
+      .products-grid{grid-template-columns:1fr 1fr;}
+      .edge-grid{grid-template-columns:1fr;}
+      .photo-strip{grid-template-columns:1fr;height:auto;}
+      .strip-photo{height:220px;}
+      footer{padding:40px 18px 22px;}
+    }
+    @media(max-width:560px){
+      .products-grid{grid-template-columns:1fr;}
+      .form-row{grid-template-columns:1fr;}
+      .hero-btns{flex-direction:column;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <img src="logo.png" alt="Pacific Energy Hub Logo"/>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#edge">Our Edge</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <!-- X (Twitter) -->
+    <a class="social-link" href="https://x.com/home" target="_blank" title="Follow us on X">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.91-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+    <!-- Instagram -->
+    <a class="social-link" href="https://www.instagram.com/pacificenergy.hub/" target="_blank" title="Follow us on Instagram">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    </a>
+    <a class="btn-nav" href="#contact">Get In Touch</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><div class="badge-dot"></div>International Energy Trading Hub</div>
+    <h1>Where Global Energy<br/><em>Markets Connect</em></h1>
+    <p>Pacific Energy Hub facilitates international energy transactions — connecting reliable suppliers with qualified buyers across oil, gas, LNG, coal, and energy commodities worldwide.</p>
+    <div class="hero-btns">
+      <a href="#products" class="btn-hp">View Our Products</a>
+      <a href="#contact" class="btn-hs">Trade With Us</a>
+    </div>
+    <div class="hero-desks">
+      <div class="desk-item"><div class="desk-dot"></div>Europe Desk</div>
+      <div class="desk-item"><div class="desk-dot"></div>Americas Desk</div>
+      <div class="desk-item"><div class="desk-dot"></div>Middle East Desk</div>
+      <div class="desk-item"><div class="desk-dot"></div>Australia Desk</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="section-label">Who We Are</div>
+      <div class="section-title">International Trade Facilitation Hub</div>
+      <p>Pacific Energy Hub is an international energy trading hub operating through dedicated trading desks across Europe, the Americas, the Middle East, and Australia.</p>
+      <p>We specialize in facilitating global energy transactions — connecting reliable suppliers with qualified buyers across international markets. We are a <strong>trade facilitation company</strong>, not a broker. Every transaction is structured, documented, and aligned before execution.</p>
+      <p>Our model prioritizes discipline, consistency, and long-term positioning. Sustainable growth in energy trade facilitation is built step-by-step — credibility over volume, relationships over shortcuts.</p>
+      <div class="desks-list">
+        <div class="desk-row"><span class="desk-flag">🌍</span> Europe Trading Desk</div>
+        <div class="desk-row"><span class="desk-flag">🌎</span> Americas Trading Desk</div>
+        <div class="desk-row"><span class="desk-flag">🌏</span> Middle East Trading Desk</div>
+        <div class="desk-row"><span class="desk-flag">🇦🇺</span> Australia Trading Desk</div>
+      </div>
+    </div>
+    <div class="about-img-wrap">
+      <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80" alt="Energy Trading Operations"/>
+      <div class="about-img-badge">
+        <div class="aib-stat"><div class="aib-num">4+</div><div class="aib-label">Global Desks</div></div>
+        <div class="aib-stat"><div class="aib-num">24/7</div><div class="aib-label">Responsiveness</div></div>
+        <div class="aib-stat"><div class="aib-num">100%</div><div class="aib-label">Fee Transparency</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products-section" id="products">
+  <div class="products-intro">
+    <div>
+      <div class="section-label">What We Trade</div>
+      <div class="section-title">Energy Commodities</div>
+    </div>
+    <p style="color:var(--muted);font-size:0.9rem;max-width:340px;line-height:1.7;">Physical and paper transactions across a full spectrum of global energy products.</p>
+  </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-icon icon-g">🛢️</div>
+      <div class="product-category">Oil & Petroleum</div>
+      <div class="product-name">Petroleum Products</div>
+      <ul class="product-items">
+        <li>EN590 10ppm Diesel</li>
+        <li>Jet Fuel A1</li>
+        <li>D6 Virgin Fuel Oil</li>
+        <li>LPG</li>
+        <li>Crude Oil (Brent / WTI)</li>
+        <li>Mazut M100</li>
+      </ul>
+    </div>
+    <div class="product-card">
+      <div class="product-icon icon-t">🔵</div>
+      <div class="product-category">Natural Gas</div>
+      <div class="product-name">LNG</div>
+      <ul class="product-items">
+        <li>Liquefied Natural Gas (LNG)</li>
+        <li>Spot & term cargoes</li>
+        <li>Global delivery basis</li>
+      </ul>
+    </div>
+    <div class="product-card">
+      <div class="product-icon icon-b">⚫</div>
+      <div class="product-category">Solid Fuels</div>
+      <div class="product-name">Coal</div>
+      <ul class="product-items">
+        <li>Thermal Coal</li>
+        <li>Metallurgical Coal</li>
+        <li>Coking Coal</li>
+      </ul>
+    </div>
+    <div class="product-card">
+      <div class="product-icon icon-d">♻️</div>
+      <div class="product-category">Other Commodities</div>
+      <div class="product-name">Energy Derivatives</div>
+      <ul class="product-items">
+        <li>Fuel oil derivatives</li>
+        <li>Refined petroleum products</li>
+        <li>Energy bulk commodities</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP: LNG + Oil + Gas -->
+<div class="photo-strip">
+  <div class="strip-photo">
+    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80" alt="LNG Terminal"/>
+    <div class="strip-photo-label">LNG — Liquefied Natural Gas</div>
+  </div>
+  <div class="strip-photo">
+    <img src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=800&q=80" alt="Oil Refinery"/>
+    <div class="strip-photo-label">Crude Oil & Petroleum</div>
+  </div>
+  <div class="strip-photo">
+    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&q=80" alt="Energy Infrastructure"/>
+    <div class="strip-photo-label">Global Energy Infrastructure</div>
+  </div>
+</div>
+
+<!-- EDGE -->
+<section class="edge-section" id="edge">
+  <div class="edge-intro">
+    <div>
+      <div class="section-label">Why Choose Us</div>
+      <div class="section-title">Our Competitive Edge</div>
+    </div>
+    <p style="color:var(--muted);font-size:0.9rem;max-width:340px;line-height:1.7;">What sets Pacific Energy Hub apart in the global energy trading landscape.</p>
+  </div>
+  <div class="edge-grid">
+    <div class="edge-card">
+      <div class="edge-icon-wrap">🌍</div>
+      <div>
+        <div class="edge-title">24/7 Global Responsiveness</div>
+        <div class="edge-desc">Energy markets never stop — and neither do we. With trading desks across multiple time zones, our responsiveness is continuous. Speed signals professionalism. Speed captures opportunity.</div>
+      </div>
+    </div>
+    <div class="edge-card">
+      <div class="edge-icon-wrap">💻</div>
+      <div>
+        <div class="edge-title">Technology-Enabled Execution</div>
+        <div class="edge-desc">We leverage intelligent digital systems to track transactions, organize documentation, monitor deal stages, and manage communication precisely. Institutional-level coordination without institutional overhead.</div>
+      </div>
+    </div>
+    <div class="edge-card">
+      <div class="edge-icon-wrap">🤝</div>
+      <div>
+        <div class="edge-title">Relationship-Driven Approach</div>
+        <div class="edge-desc">High-value energy transactions are built on trust. Direct engagement, personal attention, long-term alignment, and structured communication. We prioritize credibility over volume, relationships over shortcuts.</div>
+      </div>
+    </div>
+    <div class="edge-card">
+      <div class="edge-icon-wrap">📋</div>
+      <div>
+        <div class="edge-title">Fee Transparency</div>
+        <div class="edge-desc">Trust is the primary asset in energy trading. Our commission structures are clearly defined, agreed upon upfront, and fully documented. Clarity ensures alignment. Alignment ensures execution.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-grid">
+    <div>
+      <div class="section-label">Get In Touch</div>
+      <div class="section-title">Let's Trade Together</div>
+      <p class="section-sub" style="margin-top:12px;">Whether you're a supplier, buyer, or looking to join our network — reach out and our team will respond promptly.</p>
+      <div class="contact-cards">
+        <div class="contact-card">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-label">General Inquiries & Become a Trader</div>
+            <div class="contact-value"><a href="mailto:Info@pacificenergyhub.com">Info@pacificenergyhub.com</a></div>
+            <div class="contact-note">General questions, partnerships, and onboarding</div>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">📊</div>
+          <div>
+            <div class="contact-label">Trade Desk Inquiries</div>
+            <div class="contact-value"><a href="mailto:trade.desk@pacificenergyhub.com">trade.desk@pacificenergyhub.com</a></div>
+            <div class="contact-note">Active trade inquiries, deals, and transactions</div>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">📱</div>
+          <div>
+            <div class="contact-label">Follow Us</div>
+            <div class="social-row">
+              <a class="social-btn" href="https://x.com/home" target="_blank">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.91-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                X (Twitter)
+              </a>
+              <a class="social-btn" href="https://www.instagram.com/pacificenergy.hub/" target="_blank">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                Instagram
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <div class="form-title">Send Us a Message</div>
+      <div class="form-row">
+        <div class="form-group"><label>First Name</label><input type="text" placeholder="John"/></div>
+        <div class="form-group"><label>Last Name</label><input type="text" placeholder="Smith"/></div>
+      </div>
+      <div class="form-group"><label>Company</label><input type="text" placeholder="Your Company Name"/></div>
+      <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@company.com"/></div>
+      <div class="form-group">
+        <label>Inquiry Type</label>
+        <select>
+          <option>General Inquiry</option>
+          <option>Trade Desk — Buying</option>
+          <option>Trade Desk — Selling</option>
+          <option>Become a Trader</option>
+          <option>Partnership</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Message</label><textarea rows="4" placeholder="Tell us about your requirements..."></textarea></div>
+      <button class="btn-submit">Send Message →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo"><img src="logo.png" alt="Pacific Energy Hub"/></a>
+      <p>An international energy trading hub facilitating global transactions across oil, gas, LNG, coal, and energy derivatives. Operating 24/7 across four global trading desks.</p>
+      <div class="footer-social">
+        <a class="footer-soc-btn" href="https://x.com/home" target="_blank" title="X">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.91-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a class="footer-soc-btn" href="https://www.instagram.com/pacificenergy.hub/" target="_blank" title="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <ul>
+        <li><a href="#">Crude Oil & Petroleum</a></li>
+        <li><a href="#">LNG</a></li>
+        <li><a href="#">Thermal & Coking Coal</a></li>
+        <li><a href="#">Fuel Oil Derivatives</a></li>
+        <li><a href="#">Refined Products</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#edge">Our Approach</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="mailto:Info@pacificenergyhub.com">Become a Trader</a></li>
+        <li><a href="https://www.instagram.com/pacificenergy.hub/" target="_blank">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Pacific Energy Hub. All rights reserved.</p>
+    <div class="footer-desks">
+      <span class="footer-desk-tag">🌍 Europe</span>
+      <span class="footer-desk-tag">🌎 Americas</span>
+      <span class="footer-desk-tag">🌏 Middle East</span>
+      <span class="footer-desk-tag">🇦🇺 Australia</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
