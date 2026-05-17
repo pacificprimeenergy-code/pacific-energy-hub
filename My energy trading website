@@ -26,7 +26,7 @@
     }
     html { scroll-behavior: smooth; }
     body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
-
+ 
     /* ===== NAV ===== */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
@@ -53,7 +53,7 @@
       cursor: pointer; text-decoration: none; display: inline-block; transition: opacity 0.2s, transform 0.2s;
     }
     .btn-nav:hover { opacity: 0.9; transform: translateY(-1px); }
-
+ 
     /* ===== HERO ===== */
     .hero {
       min-height: 100vh;
@@ -63,7 +63,7 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background-image: url('https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=1600&q=80');
+      background-image: url('https://images.unsplash.com/photo-1545259741-2ea3ebf61fa3?w=1600&q=80');
       background-size: cover; background-position: center;
     }
     .hero-bg::after {
@@ -111,7 +111,7 @@
     .hero-desks { margin-top:56px;display:flex;gap:28px;flex-wrap:wrap;animation:fadeUp 0.7s 0.4s ease both; }
     .desk-item { display:flex;align-items:center;gap:8px;font-size:0.8rem;color:rgba(200,230,210,0.8);font-weight:500; }
     .desk-dot { width:7px;height:7px;border-radius:50%;background:var(--teal2);box-shadow:0 0 8px var(--teal2);flex-shrink:0; }
-
+ 
     /* ===== SECTION BASE ===== */
     section { padding: 88px 52px; }
     .section-label {
@@ -121,7 +121,7 @@
     .section-label::before { content:'';display:block;width:24px;height:2px;background:var(--teal);border-radius:2px; }
     .section-title { font-family:'Syne',sans-serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:800;color:var(--navy);line-height:1.1;letter-spacing:-0.5px;margin-bottom:16px; }
     .section-sub { font-size:1rem;color:var(--muted);line-height:1.8;max-width:580px; }
-
+ 
     /* ===== ABOUT ===== */
     .about-section { background: var(--offwhite); }
     .about-grid { display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center; }
@@ -146,7 +146,7 @@
     .aib-stat { text-align: center; }
     .aib-num { font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:var(--teal2);line-height:1; }
     .aib-label { font-size:0.66rem;text-transform:uppercase;letter-spacing:1.5px;color:rgba(200,230,210,0.7);margin-top:2px; }
-
+ 
     /* ===== PRODUCTS ===== */
     .products-section { background: white; }
     .products-intro { display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:52px;flex-wrap:wrap;gap:24px; }
@@ -172,7 +172,7 @@
     .product-items { list-style:none;display:flex;flex-direction:column;gap:6px; }
     .product-items li { font-size:0.82rem;color:var(--muted);display:flex;align-items:center;gap:7px; }
     .product-items li::before { content:'';display:block;width:4px;height:4px;border-radius:50%;background:var(--teal2);flex-shrink:0; }
-
+ 
     /* ===== PHOTO STRIP ===== */
     .photo-strip { padding: 0; display: grid; grid-template-columns: repeat(3,1fr); height: 320px; }
     .strip-photo { overflow: hidden; position: relative; }
@@ -184,7 +184,7 @@
       background: linear-gradient(to top, rgba(10,31,14,0.85), transparent);
       color: white; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.5px;
     }
-
+ 
     /* ===== EDGE ===== */
     .edge-section { background: var(--offwhite); }
     .edge-intro { display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;flex-wrap:wrap;gap:24px; }
@@ -194,7 +194,99 @@
     .edge-icon-wrap { width:50px;height:50px;flex-shrink:0;border-radius:12px;background:linear-gradient(135deg,rgba(26,107,47,0.09),rgba(30,138,122,0.09));display:flex;align-items:center;justify-content:center;font-size:1.4rem; }
     .edge-title { font-family:'Syne',sans-serif;font-size:1.02rem;font-weight:700;color:var(--navy);margin-bottom:7px; }
     .edge-desc { font-size:0.87rem;line-height:1.75;color:var(--muted); }
-
+ 
+    /* ===== TEAM SECTION ===== */
+    .team-section { background: var(--navy2); padding: 88px 52px; }
+    .team-section .section-label { color: var(--teal2); }
+    .team-section .section-label::before { background: var(--teal2); }
+    .team-section .section-title { color: white; }
+ 
+    /* Leadership messages */
+    .leadership-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 48px; margin-bottom: 56px; }
+    .leader-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(37,184,158,0.2);
+      border-radius: 20px;
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .leader-card:hover { border-color: rgba(37,184,158,0.5); transform: translateY(-3px); }
+    .leader-card::before {
+      content: '\201C';
+      position: absolute; top: 16px; right: 24px;
+      font-family: 'Syne', sans-serif;
+      font-size: 6rem; line-height: 1;
+      color: rgba(37,184,158,0.12);
+      font-weight: 800;
+    }
+    .leader-role {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(37,184,158,0.12); border: 1px solid rgba(37,184,158,0.25);
+      color: var(--teal2); padding: 4px 12px; border-radius: 100px;
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .leader-message {
+      font-size: 0.95rem; line-height: 1.85; color: rgba(210,240,218,0.8);
+      font-weight: 300; margin-bottom: 24px;
+    }
+    .leader-sig {
+      display: flex; align-items: center; gap: 14px;
+      border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px;
+    }
+    .leader-avatar {
+      width: 46px; height: 46px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--green), var(--teal));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 800; color: white;
+      flex-shrink: 0;
+    }
+    .leader-name { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: white; }
+    .leader-title { font-size: 0.75rem; color: rgba(200,230,210,0.5); margin-top: 2px; }
+ 
+    /* Agent cards */
+    .agents-label {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--teal2); margin-bottom: 24px; display: flex; align-items: center; gap: 10px;
+    }
+    .agents-label::before { content:'';display:block;width:24px;height:2px;background:var(--teal2);border-radius:2px; }
+    .agents-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+    .agent-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 24px 20px;
+      transition: all 0.25s;
+      position: relative;
+    }
+    .agent-card:hover {
+      background: rgba(37,184,158,0.07);
+      border-color: rgba(37,184,158,0.3);
+      transform: translateY(-2px);
+    }
+    .agent-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, rgba(37,184,158,0.3), rgba(126,217,87,0.3));
+      border: 1px solid rgba(37,184,158,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 800;
+      color: var(--teal2); margin-bottom: 14px;
+    }
+    .agent-name { font-family: 'Syne', sans-serif; font-size: 0.9rem; font-weight: 700; color: white; margin-bottom: 10px; }
+    .agent-quote {
+      font-size: 0.83rem; line-height: 1.7; color: rgba(200,230,210,0.65);
+      font-style: italic;
+    }
+    .agent-quote::before { content: '"'; color: var(--teal2); font-style: normal; }
+    .agent-quote::after { content: '"'; color: var(--teal2); font-style: normal; }
+    .agent-tag {
+      display: inline-block; margin-top: 12px;
+      font-size: 0.62rem; letter-spacing: 1.5px; text-transform: uppercase;
+      color: rgba(37,184,158,0.6); font-weight: 600;
+    }
+ 
     /* ===== CONTACT ===== */
     .contact-section { background: white; border-top: 1px solid var(--border); }
     .contact-grid { display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start; }
@@ -216,7 +308,7 @@
     }
     .social-btn:hover { border-color:var(--teal);color:var(--teal);background:white; }
     .social-btn svg { width:16px;height:16px;flex-shrink:0; }
-
+ 
     .contact-form { background:var(--offwhite);border-radius:16px;padding:36px;border:1px solid var(--border); }
     .form-title { font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;color:var(--navy);margin-bottom:22px; }
     .form-row { display:grid;grid-template-columns:1fr 1fr;gap:12px; }
@@ -236,7 +328,7 @@
       cursor:pointer;transition:opacity 0.2s,transform 0.2s;margin-top:4px;
     }
     .btn-submit:hover { opacity:0.9;transform:translateY(-1px); }
-
+ 
     /* ===== FOOTER ===== */
     footer {
       background: var(--navy2);
@@ -261,29 +353,32 @@
     .footer-bottom p { color:rgba(200,230,210,0.28);font-size:0.77rem; }
     .footer-desks { display:flex;gap:16px; }
     .footer-desk-tag { font-size:0.7rem;color:rgba(37,184,158,0.55);letter-spacing:0.5px; }
-
+ 
     /* ===== RESPONSIVE ===== */
     @media(max-width:960px){
       nav{padding:0 18px;}
       .nav-links{display:none;}
       section{padding:60px 18px;}
       .hero{padding:100px 18px 60px;}
-      .about-grid,.contact-grid,.footer-top{grid-template-columns:1fr;gap:32px;}
+      .about-grid,.contact-grid,.footer-top,.leadership-grid{grid-template-columns:1fr;gap:32px;}
       .products-grid{grid-template-columns:1fr 1fr;}
       .edge-grid{grid-template-columns:1fr;}
       .photo-strip{grid-template-columns:1fr;height:auto;}
       .strip-photo{height:220px;}
       footer{padding:40px 18px 22px;}
+      .agents-grid{grid-template-columns:1fr 1fr;}
+      .team-section{padding:60px 18px;}
     }
     @media(max-width:560px){
       .products-grid{grid-template-columns:1fr;}
       .form-row{grid-template-columns:1fr;}
       .hero-btns{flex-direction:column;}
+      .agents-grid{grid-template-columns:1fr;}
     }
   </style>
 </head>
 <body>
-
+ 
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">
@@ -293,21 +388,20 @@
     <li><a href="#about">About</a></li>
     <li><a href="#products">Products</a></li>
     <li><a href="#edge">Our Edge</a></li>
+    <li><a href="#team">Team</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-right">
-    <!-- X (Twitter) -->
     <a class="social-link" href="https://x.com/home" target="_blank" title="Follow us on X">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.91-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
     </a>
-    <!-- Instagram -->
     <a class="social-link" href="https://www.instagram.com/pacificenergy.hub/" target="_blank" title="Follow us on Instagram">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
     </a>
     <a class="btn-nav" href="#contact">Get In Touch</a>
   </div>
 </nav>
-
+ 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
@@ -327,7 +421,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ABOUT -->
 <section class="about-section" id="about">
   <div class="about-grid">
@@ -354,7 +448,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- PRODUCTS -->
 <section class="products-section" id="products">
   <div class="products-intro">
@@ -362,7 +456,7 @@
       <div class="section-label">What We Trade</div>
       <div class="section-title">Energy Commodities</div>
     </div>
-    <p style="color:var(--muted);font-size:0.9rem;max-width:340px;line-height:1.7;">Physical and paper transactions across a full spectrum of global energy products.</p>
+    <p style="color:var(--muted);font-size:0.9rem;max-width:340px;line-height:1.7;">Physical transactions across a full spectrum of global energy products.</p>
   </div>
   <div class="products-grid">
     <div class="product-card">
@@ -410,11 +504,11 @@
     </div>
   </div>
 </section>
-
-<!-- PHOTO STRIP: LNG + Oil + Gas -->
+ 
+<!-- PHOTO STRIP -->
 <div class="photo-strip">
   <div class="strip-photo">
-    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80" alt="LNG Terminal"/>
+    <img src="lng1.jpg" alt="LNG Terminal"/>
     <div class="strip-photo-label">LNG — Liquefied Natural Gas</div>
   </div>
   <div class="strip-photo">
@@ -426,7 +520,7 @@
     <div class="strip-photo-label">Global Energy Infrastructure</div>
   </div>
 </div>
-
+ 
 <!-- EDGE -->
 <section class="edge-section" id="edge">
   <div class="edge-intro">
@@ -467,7 +561,79 @@
     </div>
   </div>
 </section>
-
+ 
+<!-- TEAM -->
+<section class="team-section" id="team">
+  <div class="section-label">Our People</div>
+  <div class="section-title" style="color:white;">The Team Behind the Trade</div>
+  <p style="color:rgba(200,230,210,0.6);font-size:0.97rem;line-height:1.8;max-width:560px;margin-top:8px;">Driven by vision, powered by people who don't stop until the deal is done.</p>
+ 
+  <!-- Leadership Messages -->
+  <div class="leadership-grid">
+    <!-- CEO -->
+    <div class="leader-card">
+      <div class="leader-role">Chief Executive Officer</div>
+      <div class="leader-message">
+        At Pacific Energy Hub, we believe that the future of energy trading lies at the intersection of trust and technology. Our mission is to move beyond the traditional 'middleman' model by providing a transparent, AI-verified ecosystem where mid-to-large scale buyers can secure critical resources with absolute confidence.<br/><br/>
+        Whether we are facilitating a shipment of EN590 or brokering high-grade Bonny Light Oil, our focus remains on precision, speed, and the relentless pursuit of operational excellence. We aren't just trading commodities; we are securing the fuel that powers regional growth and industrial progress.
+      </div>
+      <div class="leader-sig">
+        <div class="leader-avatar">KA</div>
+        <div>
+          <div class="leader-name">K. Ail</div>
+          <div class="leader-title">Chief Executive Officer, Pacific Energy Hub</div>
+        </div>
+      </div>
+    </div>
+    <!-- MD -->
+    <div class="leader-card">
+      <div class="leader-role">Managing Director</div>
+      <div class="leader-message">
+        Yes, we're new — but don't let that fool you. ✨<br/><br/>
+        Our team may be young, but we're amazing. We work around the clock, and we simply don't rest until the deal is done.<br/><br/>
+        As for me? I rest easy. Because I know my procurement agents have everything under control.<br/><br/>
+        So go ahead, give us a chance. We'll move mountains (and meet deadlines) — with a smile.
+      </div>
+      <div class="leader-sig">
+        <div class="leader-avatar" style="background:linear-gradient(135deg,var(--teal),#7ed957);">MK</div>
+        <div>
+          <div class="leader-name">M. Khan</div>
+          <div class="leader-title">Managing Director, Pacific Energy Hub</div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- Agents -->
+  <div class="agents-label">Procurement Agents</div>
+  <div class="agents-grid">
+    <div class="agent-card">
+      <div class="agent-avatar">M</div>
+      <div class="agent-name">Mia</div>
+      <div class="agent-quote">I'll chase every lead until it becomes a 'yes.'</div>
+      <div class="agent-tag">⚡ Procurement Agent</div>
+    </div>
+    <div class="agent-card">
+      <div class="agent-avatar">L</div>
+      <div class="agent-name">Lui</div>
+      <div class="agent-quote">Fast, fair, and focused — that's my promise to you.</div>
+      <div class="agent-tag">⚡ Procurement Agent</div>
+    </div>
+    <div class="agent-card">
+      <div class="agent-avatar">G</div>
+      <div class="agent-name">Grace</div>
+      <div class="agent-quote">Consider it done — before you even ask.</div>
+      <div class="agent-tag">⚡ Procurement Agent</div>
+    </div>
+    <div class="agent-card">
+      <div class="agent-avatar">S</div>
+      <div class="agent-name">Sahu</div>
+      <div class="agent-quote">No rest, no shortcuts — just results you can count on.</div>
+      <div class="agent-tag">⚡ Procurement Agent</div>
+    </div>
+  </div>
+</section>
+ 
 <!-- CONTACT -->
 <section class="contact-section" id="contact">
   <div class="contact-grid">
@@ -533,7 +699,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- FOOTER -->
 <footer>
   <div class="footer-top">
@@ -564,6 +730,7 @@
       <ul>
         <li><a href="#about">About Us</a></li>
         <li><a href="#edge">Our Approach</a></li>
+        <li><a href="#team">Our Team</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="mailto:Info@pacificenergyhub.com">Become a Trader</a></li>
         <li><a href="https://www.instagram.com/pacificenergy.hub/" target="_blank">Instagram</a></li>
@@ -580,6 +747,6 @@
     </div>
   </div>
 </footer>
-
+ 
 </body>
 </html>
